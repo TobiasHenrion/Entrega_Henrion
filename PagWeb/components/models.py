@@ -15,9 +15,12 @@ class Components(models.Model):
         ('Otros', 'Otros'),  
     )
 
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50, verbose_name= 'Nombre')
     category = models.CharField(choices = CHOICES, max_length=25)
     marca = models.CharField(max_length=25)
     specification = models.CharField(default="", max_length=500)
     price = models.FloatField()
+    img = models.ImageField(upload_to="componentes")
 
+    def __str__(self):
+        return self.name

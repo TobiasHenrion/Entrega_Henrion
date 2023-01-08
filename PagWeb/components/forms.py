@@ -19,5 +19,6 @@ class ComponentsForm(forms.Form):
     marca = forms.CharField(max_length=25)
     specification = forms.CharField(max_length=500)
     price = forms.FloatField()
+    img = forms.ImageField()
 
 

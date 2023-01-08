@@ -7,7 +7,7 @@
 {% block content %}
 <h1>Agrega un componente a la pagina : </h1>
     {% if form %}
-        <form action="" method="POST">
+        <form action="" method="POST" enctype="multipart/form-data">
 
             {% csrf_token %}
             <table>

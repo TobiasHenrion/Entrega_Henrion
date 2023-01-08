@@ -6,11 +6,15 @@ from components.forms import ComponentsForm
 
 
 def list_components(request):
-
-    components = Components.objects.all()
+    if 'search' in request.GET:
+        search = request.GET['search']
+        components = Components.objects.filter(name__contains= search)
+    else:
+        components = Components.objects.all()
     context = {
         'components' : components
     }
+    
 
     return render(request, 'components/list_components.html', context=context)
 
@@ -20,7 +24,8 @@ def create_components(request):
             'form' : ComponentsForm()
         }
     elif request.method == 'POST':
-        form = ComponentsForm(request.POST)
+        
+        form = ComponentsForm(request.POST, request.FILES)
         if form.is_valid():
             Components.objects.create(
                 name = form.cleaned_data['name'],
@@ -28,10 +33,14 @@ def create_components(request):
                 marca = form.cleaned_data['marca'],
                 specification = form.cleaned_data['specification'],
                 price = form.cleaned_data['price'],
+                img = form.cleaned_data['img'],
+
         )
+            
             context={
                 'message' : 'Componente creado existosamente'
             }
+
         else:
             context ={
                 'form_errors' : form.errors,
