@@ -18,6 +18,6 @@ class Components(models.Model):
     name = models.CharField(max_length=50)
     category = models.CharField(choices = CHOICES, max_length=25)
     marca = models.CharField(max_length=25)
-    specification = models.CharField(max_length=500)
+    specification = models.CharField(default="", max_length=500)
     price = models.FloatField()
 

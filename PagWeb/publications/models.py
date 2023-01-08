@@ -15,7 +15,7 @@ class Publications(models.Model):
         ('Otros', 'Otros'),  
     )
 
-    SELL_METHOD = (
+    SELL_CHOICES= (
         ('Vender', 'Vender'),
         ('Canjear', 'Canjear'),
     )
@@ -23,6 +23,6 @@ class Publications(models.Model):
     name = models.CharField(max_length=50)
     category = models.CharField(choices = CHOICES, max_length=25)
     marca = models.CharField(max_length=25)
-    mehtod = models.CharField(choices = SELL_METHOD, max_length= 10)
+    mehtod = models.CharField(choices = SELL_CHOICES, max_length= 10)
     notes = models.CharField(max_length=500)
 
