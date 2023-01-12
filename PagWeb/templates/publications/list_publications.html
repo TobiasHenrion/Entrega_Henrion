@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title%} Listado de publicaciones {% endblock %}
+
+
+{% block content %}
+
+    {% for publication in publications%}
+
+
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row no-gutters">
+        <div class="col-md-4">
+            <img src="{{publication.img.url}}" width= "175" height="240">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+            <h5 class="card-title">{{publication.name}}</h5>
+            <p class="card-text"><small class="text-muted">{{publication.category}}</small></p>
+            <p class="card-text">{{publication.notes}}</p>
+            <p class="card-text"><small class="text-muted">$ {{publication.price}}</small></p>
+            <a href="#" class="btn">Comprar</a>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    {% endfor %}
+{% endblock %}

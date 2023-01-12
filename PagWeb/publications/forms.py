@@ -1,6 +1,7 @@
-from django.db import models
+from django import forms
 
-class Publications(models.Model):
+
+class PublicationsForm(forms.Form):
     CHOICES = (
         ('Placas de video', 'Placas de video'),
         ('Procesadores', 'Procesadores'),
@@ -20,16 +21,13 @@ class Publications(models.Model):
         ('Canjear', 'Canjear'),
     )
 
-    name = models.CharField(max_length=50)
-    category = models.CharField(choices = CHOICES, max_length=25)
-    marca = models.CharField(max_length=25)
-    meth = models.CharField(choices = SELL_CHOICES, max_length= 10)
-    notes = models.CharField(max_length=500)
-    img = models.ImageField(upload_to="publications", default="")
-    change = models.CharField(max_length=300, default="")
-    price = models.FloatField(default=0)
-
-    def __str__(self):
-        return self.name
+    name = forms.CharField(max_length=50)
+    category = forms.ChoiceField(choices=CHOICES)
+    marca = forms.CharField(max_length=25)
+    notes = forms.CharField(max_length=500)
+    meth = forms.ChoiceField(choices=SELL_CHOICES)
+    price = forms.FloatField()
+    change = forms.CharField(max_length=300, required=False)
+    img = forms.ImageField()
 
 
