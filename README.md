@@ -1,4 +1,8 @@
 # Entrega_Henrion
+Descargar la librerira pillow.
+pip install pillow
+
+
 En el inicio/index se pueden crear Publicaciones o registrar usuarios 
 A la derecha en el buscador se pude buscar "Componentes" por el nombre del componente que se desee buscar y sera redireccionado a la url "list_components" donde hay se aplicara el filter con el nombre
 
